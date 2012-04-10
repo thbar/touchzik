@@ -1,0 +1,22 @@
+<% faye_host = "http://#{request.host}:#{request.port}" %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="stylesheet" type="text/css" href="/stylesheet.css">
+    <script type="text/javascript" src="kinetic-v3.9.1.min.js"></script>
+    <script type="text/javascript" src="<%= faye_host %>/faye.js"></script>
+    <script type="text/javascript" src="application.js"></script>
+    <script type="text/javascript">
+      window.onload = function() {
+        console.log("Host is <%= faye_host %> ");
+        var client = new Faye.Client('<%= faye_host %>/faye');
+        start_playing(client);
+      };
+    </script>
+  </head>
+  <body>
+    <div id="container"/>
+  </body>
+</html>
